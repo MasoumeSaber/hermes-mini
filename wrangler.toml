@@ -1,0 +1,24 @@
+name = "hermes-mini"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+workers_dev = true
+preview_urls = false
+
+[vars]
+ALLOWED_USER_ID = "695889718"
+MODEL = "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+
+[ai]
+binding = "AI"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "hermes-db"
+database_id = "4ad26149-be90-46b5-b570-e5b2e8ef47a8"
+migrations_dir = "migrations"
+
+[observability]
+enabled = true
+
+[triggers]
+crons = ["*/5 * * * *"]
