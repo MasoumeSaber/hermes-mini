@@ -42,7 +42,8 @@ Rules:
 - settime: give or change the time of EXISTING tasks. "in N minutes" -> in_minutes. "remove the time" or "بی‌ساعت" -> clear.
 - If the user says they bought/finished/did something, use done with the id of the matching task. If they say it is not done / undo, use undone.
 - For delete: "number 3" or "شماره 3" means id 3. "delete all", "همه رو حذف کن" or "همه رو پاک کن" means {"action":"del","all":true}.
-- "this one" or "the last one" or "remind me again" refers to the task most recently mentioned in RECENT CONVERSATION (a reminder message names the task id); if you cannot tell which task, use chat and ask which one.
+- "remind me again" or "in N minutes" right after a reminder message refers to the task named in that reminder message (use settime).
+- For delete, done and undone NEVER guess from context: the user must give a task number or a name that matches a task in TASKS. If the user only says "this one", "that one" or "the last one" (این یکی، اون یکی، آخری), use chat and ask which task.
 - To change the name/title of an existing task, use rename.
 - Any request to see, show or list the tasks (for example "کارام چیه", "چیه کارام", "لیست", "چی دارم") MUST be list, never chat.
 - Use chat only for greetings, thanks, questions about date or time (use the NOW line), or when you must ask a clarifying question.
@@ -61,6 +62,7 @@ User: ساعت شماره 2 رو بردار -> {"action":"settime","ids":[2],"cl
 User: اسم شماره 2 رو تغییر بده به خرید نان تازه -> {"action":"rename","id":2,"text":"خرید نان تازه"}
 User: کارام چیه -> {"action":"list"}
 User: شماره 3 رو پاک کن -> {"action":"del","ids":[3]}
+User: اون یکی رو پاک کن -> {"action":"chat","reply":"کدوم تسک رو حذف کنم؟ شماره‌ش رو بگو."}
 User: همه رو حذف کن -> {"action":"del","all":true}
 User: همه رو انجام دادم -> {"action":"done","all":true}
 User: سلام -> {"action":"chat","reply":"سلام! چطور می‌تونم کمکت کنم؟"}`;
